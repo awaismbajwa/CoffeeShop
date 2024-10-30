@@ -39,11 +39,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_212824) do
 
   create_table "order_combinations", force: :cascade do |t|
     t.integer "order_id", null: false
-    t.integer "combination_id", null: false
+    t.integer "combination_id"
+    t.integer "item_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["combination_id"], name: "index_order_combinations_on_combination_id"
+    t.index ["item_id"], name: "index_order_combinations_on_item_id"
     t.index ["order_id"], name: "index_order_combinations_on_order_id"
   end
 
@@ -65,5 +67,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_212824) do
   add_foreign_key "item_combinations", "combinations"
   add_foreign_key "item_combinations", "items"
   add_foreign_key "order_combinations", "combinations"
+  add_foreign_key "order_combinations", "items"
   add_foreign_key "order_combinations", "orders"
 end
