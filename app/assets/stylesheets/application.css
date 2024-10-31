@@ -13,3 +13,71 @@
  *= require_tree .
  *= require_self
  */
+
+/* Basic reset for padding and margin */
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Make ul a flex container */
+}
+
+/* Style individual tabs */
+nav ul li {
+    margin-right: 1rem; /* Add space between tabs */
+}
+
+/* Style the links inside the tabs */
+nav ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    background-color: #f4f4f4;
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+/* Add hover effect */
+nav ul li a:hover {
+    background-color: #ddd;
+}
+
+/* Style active tab */
+nav ul li a.active {
+    background-color: #fff; /* Different background for active tab */
+    border-bottom: 1px solid #fff; /* Connects active tab to content area */
+    font-weight: bold;
+}
+
+.home {
+    justify-content: center;
+    display: grid;
+}
+
+.bundles {
+    justify-content: center;
+    display: flex;
+}
+
+
+
+.shop-item {
+    display: inline-block;
+    margin: 50px;
+}
+
+.shop-bundle {
+    display: inline-block;
+    margin: 50px;
+}
+
+.bundle-items{
+    font-size: small;
+}
