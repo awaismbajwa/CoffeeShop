@@ -16,7 +16,7 @@ const Bundle = ({ bundle, addToCart }) => (
         <p>Discount: {bundle.discount}%</p>
         <p><strong>Discounted Price: ${bundle.total_discounted_price}</strong></p>
 
-        <p><strong>Tax: {bundle.tax.name} - {bundle.tax.rate}%</strong></p>
+        <p><small>Tax: {bundle.tax.name} - {bundle.tax.rate}%</small></p>
 
         <button onClick={() => addToCart(bundle)}>Add to Cart</button>
     </div>

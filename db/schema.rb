@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_30_212824) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_215937) do
   create_table "combinations", force: :cascade do |t|
     t.string "name"
     t.decimal "discount"
@@ -35,6 +35,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_212824) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tax_id", null: false
+    t.index ["tax_id"], name: "index_items_on_tax_id"
   end
 
   create_table "order_combinations", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_212824) do
   add_foreign_key "combinations", "taxes"
   add_foreign_key "item_combinations", "combinations"
   add_foreign_key "item_combinations", "items"
+  add_foreign_key "items", "taxes"
   add_foreign_key "order_combinations", "combinations"
   add_foreign_key "order_combinations", "items"
   add_foreign_key "order_combinations", "orders"

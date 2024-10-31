@@ -33,50 +33,59 @@ Item.create!([
     {
       name: "Lemonade",
       price: 7,
-      category: "drinks"
+      category: "drinks",
+      tax: standard_tax
     },
     {
       name: "Crispy Grilled Sandwich",
       price: 20,
-      category: "sandwich"
+      category: "sandwich",
+      tax: standard_tax
     },
     {
       name: "Classic Sandwich",
       price: 15,
-      category: "sandwich"
+      category: "sandwich",
+      tax: standard_tax
     },
     {
       name: "Shortbread Cookies",
       price: 7,
-      category: "cookies"
+      category: "cookies",
+      tax: standard_tax
     },
     {
       name: "Plain Bagel",
       price: 8,
-      category: "bakery"
+      category: "bakery",
+      tax: standard_tax
     },
     {
       name: "Everything Bagel",
       price: 10,
-      category: "bakery"
+      category: "bakery",
+      tax: standard_tax
     },
 
     {
       name: "Chocolate Brownie",
       price: 12,
-      category: "bakery"
+      category: "bakery",
+      tax: standard_tax
     },
     {
       name: "Butter Croissant",
       price: 11,
-      category: "bakery"
+      category: "bakery",
+      tax: standard_tax
     } ])
 
 madeleines = Item.create!(
   {
     name: "Madeleines",
     price: 5,
-    category: "cookies"
+    category: "cookies",
+    tax: standard_tax
   }
 )
 
@@ -84,7 +93,8 @@ flat_white = Item.create!(
   {
     name: "Flat white",
     price: 15,
-    category: "drinks"
+    category: "drinks",
+    tax: standard_tax
   }
 )
 
@@ -92,7 +102,8 @@ double_chocolate_brownie = Item.create!(
   {
     name: "Double Chocolate Brownie",
     price: 15,
-    category: "bakery"
+    category: "bakery",
+    tax: standard_tax
   }
 )
 
@@ -100,30 +111,35 @@ ceramic_mug = Item.create!(
   {
     name: "Ceramic Desktop Mug",
     price: 30,
-    category: "mug"
+    category: "mug",
+    tax: standard_tax
   }
 )
 
 espresso = Item.create!({
   name: "Espresso",
   price: 5,
-  category: "drinks" })
+  category: "drinks",
+  tax: standard_tax })
 
 ham_swiss_sandwich = Item.create!({
   name: "Ham&Swiss Sandwich",
   price: 20,
-  category: "sandwich" })
+  category: "sandwich",
+  tax: standard_tax })
 
 chocolate_croissant = Item.create!({
   name: "Chocolate Croissant",
   price: 14,
-  category: "bakery" })
+  category: "bakery",
+  tax: standard_tax })
 
 cappuccino = Item.create!(
   {
     name: "Cappuccino",
     price: 12,
-    category: "drinks"
+    category: "drinks",
+    tax: standard_tax
   }
 )
 
@@ -131,7 +147,8 @@ chocolate_chip_cookie = Item.create!(
   {
     name: "Chocolate Chip Cookie",
     price: 8,
-    category: "cookies"
+    category: "cookies",
+    tax: standard_tax
   }
 )
 
@@ -139,7 +156,8 @@ recycled_mug = Item.create!(
   {
     name: "Recycled Ceramic Mug",
     price: 15,
-    category: "mug"
+    category: "mug",
+    tax: standard_tax
   }
 )
 
