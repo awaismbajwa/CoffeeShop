@@ -9,6 +9,7 @@ A Ruby on Rails application with a React frontend and SQLite3 database. This pro
 - [Installation](#installation)
 - [Database Setup](#database-setup)
 - [Running the Project](#running-the-project)
+- [Running Tests](#running-tests)
 - [Docker Setup](#docker-setup)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
@@ -75,6 +76,14 @@ you can run Webpack in a separate terminal:
 3. **Navigate to Your Application**
 
    Open a browser and go to http://localhost:3000 to see the application running.
+
+## Running Tests
+   Project is configured to run RSpec tests and linting
+   ```bash
+   rspec #for executing all the specs in repo
+   bin/rubocop #for code linting checks
+   ```
+
 
 
 ## Docker Setup
