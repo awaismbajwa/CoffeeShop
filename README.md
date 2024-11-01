@@ -81,9 +81,11 @@ you can run Webpack in a separate terminal:
 1. **Make sure you have the following installed**:
    - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
    - **Docker Compose**: Included with Docker Desktop or install separately via Docker's documentation
+   
 
 2.  **Build and Start Docker Containers**
-
+    
+    For running app with docker change webpacker dev_server:host and dev_server:public values from localhost to webpacker
     Run the following commands to build the Docker image and start the containers:
     ```bash
     docker-compose build
