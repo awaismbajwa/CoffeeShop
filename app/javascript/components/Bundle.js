@@ -1,7 +1,7 @@
 // app/javascript/components/Item.js
 import React from 'react';
 
-const Bundle = ({ bundle, addToCart }) => (
+const Bundle = ({ bundle, addToCart, isPurchased }) => (
     <div className={"shop-bundle"}>
         <h3>{bundle.name}</h3>
 
@@ -18,7 +18,7 @@ const Bundle = ({ bundle, addToCart }) => (
 
         <p><small>Tax: {bundle.tax.name} - {bundle.tax.rate}%</small></p>
 
-        <button onClick={() => addToCart(bundle)}>Add to Cart</button>
+        <button onClick={() => addToCart(bundle)} disabled={isPurchased}>Add to Cart</button>
     </div>
 );
 

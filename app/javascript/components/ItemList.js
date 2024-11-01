@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
 
-const ItemList = ({ itemsData, addToCart }) => {
+const ItemList = ({ itemsData, addToCart, isPurchased }) => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const ItemList = ({ itemsData, addToCart }) => {
     return (
         <div className={"items"}>
             {itemsData.items.map((item) => (
-                <Item key={item.id} item={item} addToCart={addToCart} />
+                <Item key={item.id} isPurchased={isPurchased} item={item} addToCart={addToCart} />
             ))}
         </div>
     );

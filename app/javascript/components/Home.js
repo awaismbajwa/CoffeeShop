@@ -5,12 +5,18 @@ import Receipt from '../components/Receipt';
 import BundleList from "./BundleList";
 import cart from "../components/Cart";
 
-const Home = ({addToCart, cartItems, removeFromCart, isPurchased, handlePurchase, itemsData}) => {
+const Home = ({addToCart, cartItems, removeFromCart, isPurchased, purchasedOrder, handlePurchase, handleNewOrder, itemsData, errorMessage}) => {
 
     return (
         <div className={"home"}>
             {isPurchased ? (
-                <Receipt cartItems={cartItems} />
+                <div className={"receipt"}>
+                    <Receipt cartItems={cartItems} purchasedOrder={purchasedOrder}/>
+
+                    <button onClick={handleNewOrder}>
+                        New Order
+                    </button>
+                </div>
             ) : (
                 <>
                     <div>
@@ -22,6 +28,10 @@ const Home = ({addToCart, cartItems, removeFromCart, isPurchased, handlePurchase
                     <button onClick={handlePurchase} disabled={cartItems.length === 0}>
                         Place Order
                     </button>
+
+                    <div className={"error"}>
+                        <p>{errorMessage}</p>
+                    </div>
                 </>
             )}
         </div>

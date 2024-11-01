@@ -66,8 +66,6 @@ nav ul li a.active {
     display: flex;
 }
 
-
-
 .shop-item {
     display: inline-block;
     margin: 50px;
@@ -80,4 +78,25 @@ nav ul li a.active {
 
 .bundle-items{
     font-size: small;
+}
+
+
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Positions children to the far left and far right */
+    align-items: center; /* Centers items vertically */
+    padding: 0 10px;
+    padding-bottom: 5px;
+}
+.cart-item > button {
+    margin-left: auto;
+}
+.cart-item > span {
+    flex-grow: 1; /* Ensures text spans the left side */
+    text-align: left; /* Aligns text to the left */
+    margin-right: 50px;
+}
+
+.error{
+    color: darkred;
 }

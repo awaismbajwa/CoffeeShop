@@ -11,4 +11,10 @@ class Combination < ApplicationRecord
     dc = price * (discount/100.0)
     price - dc
   end
+
+  def total_tax_price
+    price = total_discounted_price
+    tax_value = price * (tax.rate/100.0)
+    price + tax_value
+  end
 end
