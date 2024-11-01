@@ -2,19 +2,24 @@
 import React, {useEffect, useState} from 'react';
 import orderHandler from "../services/orderHandler";
 
-const Receipt = ({ cartItems, purchasedOrder }) => {
+const Receipt = ({ purchasedOrder, handleNewOrder }) => {
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
         // Fetch the order details when the component mounts
-        orderHandler.fetchOrder(purchasedOrder.data.order_id).then((response)=>{
-            let orderData = response;
-            orderData.order_combinations = orderData.order_combinations.map( (combinations)=>{
-                return combinations.item ? combinations.item : combinations.combination;
-            } )
-            setOrder(orderData);
-        });
+        if (purchasedOrder){
+            orderHandler.fetchOrder(purchasedOrder.data.order_id).then((response)=>{
+                let orderData = response;
+                orderData.order_combinations = orderData.order_combinations.map( (combinations)=>{
+                    return combinations.item ? combinations.item : combinations.combination;
+                } )
+                setOrder(orderData);
+            });
+        }
     }, [purchasedOrder]);
+
+    if (!purchasedOrder)
+        handleNewOrder();
 
     if (!order) return <p>Loading...</p>;
 

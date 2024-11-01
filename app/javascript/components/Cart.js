@@ -8,7 +8,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
 
     return (
         <div>
-            <h2>Your Cart</h2>
+            <h1>New Order Cart</h1>
             {cartItems.map((item, index) => (
                 <div className={"cart-item"} key={index}>
                     <span>{item.name} - ${parseFloat(orderHandler.getItemPrice(item))}</span>

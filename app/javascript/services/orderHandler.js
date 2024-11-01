@@ -93,5 +93,48 @@ export default {
             console.error(error);
             return Promise.reject(error);
         }
+    },
+    fetchOrdersByStatus: async (status) => {
+        try {
+            const response = await fetch('/orders/status/'+status, {
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': getCSRFToken(),
+                },
+            });
+
+            if (response.ok) {
+                return Promise.resolve(await response.json());
+            }
+            else{
+                return Promise.reject(await response.json());
+            }
+        } catch (error){
+            console.error(error);
+            return Promise.reject(error);
+        }
+    },
+    updateOrderStatus: async (order, status) => {
+        try {
+            const response = await fetch('/orders/'+order.id, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': getCSRFToken(),
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            });
+
+            if (response.ok) {
+                return Promise.resolve(await response.json());
+            } else {
+                return Promise.reject(await response.json());
+            }
+        } catch (error) {
+            console.error(error);
+            return Promise.reject(error);
+        }
     }
 }

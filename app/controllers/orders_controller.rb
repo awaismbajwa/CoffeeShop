@@ -1,4 +1,13 @@
 class OrdersController < ApplicationController
+  def update
+    order = Order.find(params[:id])
+
+    if order.update(order_params)
+      render json: order, status: :ok
+    else
+      render json: { error: order.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
   def show
     @order = Order.includes(:order_combinations).find(params[:id]).as_json(include: {
       order_combinations: {
@@ -7,6 +16,16 @@ class OrdersController < ApplicationController
       }
     })
     render json: @order
+  end
+
+  def by_status
+    status = params[:status]
+    orders = Order.by_status(status).order(created_at: :desc)
+    if orders.any?
+      render json: orders, status: :ok
+    else
+      render json: { error: "No orders found with status '#{status}'" }, status: :not_found
+    end
   end
 
   def create
@@ -46,6 +65,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
   def order_params
     params.require(:order).permit(:status, :total_price)
   end

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -7,14 +7,18 @@ import Home from "../components/Home";
 import ItemList from "../components/ItemList";
 import BundleList from "../components/BundleList";
 
+
+import {OrderProvider, OrderContext} from "../components/OrderContext";
+
 import orderHandler from "../services/orderHandler";
 
 const Application = ({data}) => {
     console.log(data);
     const [cartItems, setCartItems] = useState([]);
     const [isPurchased, setIsPurchased] = useState(false);
-    const [purchasedOrder, setPurchasedOrder] = useState();
     const [errorMessage, setErrorMessage] = useState(null);
+
+    const { purchasedOrder, setPurchasedOrder } = useContext(OrderContext);
 
     const addToCart = (item) => {
         setCartItems((prev) => [...prev, item]);
@@ -37,6 +41,7 @@ const Application = ({data}) => {
 
     const handleNewOrder = () => {
         setIsPurchased(false);
+        setPurchasedOrder(null);
         setErrorMessage(null)
         setCartItems([]);
     }
@@ -45,11 +50,10 @@ const Application = ({data}) => {
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<Layout />}>
-                    <Route index element={<Home itemsData={data} handleNewOrder={handleNewOrder}
+                    <Route index element={<Home handleNewOrder={handleNewOrder}
                                                 handlePurchase={handlePurchase}
                                                 isPurchased={isPurchased}
-                                                purchasedOrder={purchasedOrder}
-                                                cartItems={cartItems} addToCart={addToCart}
+                                                cartItems={cartItems}
                                                 errorMessage={errorMessage}
                                                 removeFromCart={removeFromCart} />} />
                     <Route path="items" element={<ItemList isPurchased={isPurchased} addToCart={addToCart}
@@ -66,5 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const node = document.getElementById("app-container");
     const data = JSON.parse(node.dataset.reactProps);
     const root = ReactDOM.createRoot(node);
-    root.render(<Application data={data}/>);
+    root.render(
+        <OrderProvider>
+            <Application data={data}/>
+        </OrderProvider>
+    );
 });
