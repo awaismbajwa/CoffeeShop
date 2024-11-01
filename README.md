@@ -9,6 +9,7 @@ A Ruby on Rails application with a React frontend and SQLite3 database. This pro
 - [Installation](#installation)
 - [Database Setup](#database-setup)
 - [Running the Project](#running-the-project)
+- [Docker Setup](#docker-setup)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 
@@ -74,6 +75,29 @@ you can run Webpack in a separate terminal:
 3. **Navigate to Your Application**
 
    Open a browser and go to http://localhost:3000 to see the application running.
+
+
+## Docker Setup
+1. **Make sure you have the following installed**:
+   - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
+   - **Docker Compose**: Included with Docker Desktop or install separately via Docker's documentation
+
+2.  **Build and Start Docker Containers**
+
+    Run the following commands to build the Docker image and start the containers:
+    ```bash
+    docker-compose build
+    docker-compose up 
+    ```
+3. **Running Rails Commands in Docker**
+
+   To run Rails commands, such as opening the Rails console or creating a migration, 
+   prefix commands with <code>docker-compose run web</code>:
+   ```bash
+   docker-compose run web rails console
+   docker-compose run web rails db:create db:migrate
+   docker-compose run web rails db:reset
+   ```
 
 
 ## Project Structure
